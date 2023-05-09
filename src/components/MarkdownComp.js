@@ -8,8 +8,9 @@ function MarkdownComp() {
     const [show, setShow] = useState(true);
 
     return (
-        <>
-            <div className="container d-flex" style={{fontSize: 50}}>
+        <>  
+            <h1>Markdown</h1>
+            <div className="container d-flex w-75 fs-1 justify-content-center" >
                 <Alert show={show} variant="success"> 
                     <Alert.Heading>This is shown when it is open</Alert.Heading>
                     
