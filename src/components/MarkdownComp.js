@@ -1,24 +1,36 @@
 import React, {useState} from "react";
-// import {Link} from 'react-router-dom';
-import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
+import { marked } from "marked";
+import Collapse from "react-bootstrap/Collapse";
+import ToggleButtonComp from "./ToggleButtonComp";
+
 
 function MarkdownComp() {
 
-    const [show, setShow] = useState(true);
+    const [openPreview, setOpenPreview] = useState(true);
+    const htmlText = marked.parse('# Marked in Node.js\n\nRendered by **marked**.');
 
     return (
-        <>  
-            <h1>Markdown</h1>
-            <div className="container d-flex w-75 fs-1 justify-content-center" >
-                <Alert show={show} variant="success"> 
-                    <Alert.Heading>This is shown when it is open</Alert.Heading>
-                    
-                    <Button onClick={() => setShow(false)} variant="outline-success"> Click to close </Button>
-                </Alert>
-            {!show && <div> <p>Inside MarkdownComp</p> <Button onClick={() => setShow(true)} variant="success" >Open</Button> </div>}
-                
-            </div>
+        <>
+        <div className="container w-50 border border-success mt-auto fs-1 text-center">
+           <div className="row border border-success bg-primary">
+                <div className="col-1"></div>
+                <p className="col-10">Previewer</p>
+                <div className="col-1">
+                    <ToggleButtonComp 
+                        open={openPreview} 
+                        onClick={() => setOpenPreview(!openPreview)}
+                    />
+                </div>
+            </div> 
+            <Collapse in={openPreview}>
+                <div id="editor-text">
+                    <p>
+                        <h2>The text below is marked down </h2><hr></hr>
+                        <div dangerouslySetInnerHTML={ {__html: htmlText}}></div>
+                    </p>
+                </div>
+            </Collapse>
+        </div>  
         </>
     )
 }
