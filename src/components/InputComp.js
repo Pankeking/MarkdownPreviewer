@@ -1,31 +1,51 @@
 import React, {useState} from "react";
 // import {Link} from 'react-router-dom'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpRightAndDownLeftFromCenter, faDownLeftAndUpRightToCenter } from "@fortawesome/free-solid-svg-icons";
+import { marked } from "marked";
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
+import Collapse from "react-bootstrap/Collapse";
+import Form from "react-bootstrap/Form";
 
-//import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
 
 function InputComp() {
 
-    const [show, setShow] = useState(true);
+    const [open, setOpen] = useState(true);
+    
+    const htmlText = marked.parse('# Marked in Node.js\n\nRendered by **marked**.');
+    
+    
 
     return (
-        <div>
-            <>
-            <h1>Editor</h1>
-            <div className="container d-flex fs-1 justify-content-center">
-                <Alert show={show} variant="success"> 
-                    <Alert.Heading>This is shown when it is open</Alert.Heading>
-                    
-                    <Button onClick={() => setShow(false)} variant="outline-success"> Click to close </Button>
-                </Alert>
-            {!show && <div> <p>Inside Editor</p> <Button onClick={() => setShow(true)} variant="success" >Open</Button> </div>}
-                
-            </div>
-        </>
+        <>  
+
+            
+
+        <div className="container fs-1 justify-content-center">
+            <h1>Editor </h1>
+            <Button
+                onClick={() => setOpen(!open)}
+                aria-controls="editor-text"
+                aria-expanded={open}
+            >
+               {(!open && <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} /> )
+               || (open && <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} />)}
+            </Button>
+            <Collapse in={open}>
+                <div id="editor-text">
+             <Form>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                 <Form.Label></Form.Label>
+                 <Form.Control as="textarea" rows={10} />
+                </Form.Group>
+             </Form>
+                    <div dangerouslySetInnerHTML={ {__html: htmlText}}></div>
+                </div>
+            </Collapse>
         </div>
+        </>
     )
 }
 export default InputComp;
