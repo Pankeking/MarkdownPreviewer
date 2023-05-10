@@ -8,7 +8,7 @@ import EditorComp from "./EditorComp";
 function MainComp() {
     return(
         <React.Fragment>
-            <div className="container">
+            <div className="container mt-4">
                 <EditorComp />
                 <MarkdownComp />
             </div>
