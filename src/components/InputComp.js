@@ -2,9 +2,8 @@ import React, {useState} from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
 import { marked } from "marked";
 
-function InputComp({ onChange }) {
+function InputComp({ onChange, InitText }) {
 
-    const InitText = '# Welcome to my React Markdown Previewer!\n## This is a sub-heading...\n### And here\'s some other cool stuff:\nHeres some code, `<div></div>`, between 2 backticks.'
 
     const [inputValue, setInputValue] = useState(InitText);
 

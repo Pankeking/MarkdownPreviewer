@@ -6,7 +6,7 @@ import InputComp from "./InputComp";
 
 
 
-function EditorComp({ onChange }) {
+function EditorComp({ onChange, InitText }) {
 
     const [openEditor, setOpenEditor] = useState(true);
 
@@ -24,7 +24,7 @@ function EditorComp({ onChange }) {
                 />
                 <Collapse in={openEditor}>
                     <div id="editor-text" className="ms-2 p-0">
-                    <InputComp onChange={handleInputChange} />
+                    <InputComp onChange={handleInputChange} InitText={InitText}/>
                     
                     </div>
                 </Collapse>

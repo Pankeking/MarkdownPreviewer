@@ -3,6 +3,7 @@
   padding: 0;
   /* border: 1px solid black; */
 
+
 }
 
 html {
@@ -32,4 +33,9 @@ code {
   background-color: lightblue;
   margin-right: 1rem;
   padding: 1rem;
+  border: none;
+}
+#editor:focus {
+  border: none;
+  outline: none;
 }

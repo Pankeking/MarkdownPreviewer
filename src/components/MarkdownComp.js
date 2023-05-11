@@ -8,7 +8,14 @@ function MarkdownComp({ markdownText }) {
 
     const [openPreview, setOpenPreview] = useState(true);
     
-    const markedDownText = marked(markdownText, {sanitize: true});
+    const renderer = new marked.Renderer();
+    marked.setOptions({
+      renderer: renderer,
+      gfm: true,
+      breaks: true,
+    });
+
+    const markedDownText = {__html: marked(markdownText, {sanitize: true})};
 
     return (
         <>
@@ -20,9 +27,8 @@ function MarkdownComp({ markdownText }) {
            />
             <Collapse in={openPreview}>
                 <div className="text text-start" id="editor-text">
-                    <p>
-                        <h2>The text below is marked down </h2><hr></hr>
-                        <div dangerouslySetInnerHTML={ {__html: markedDownText}}></div>
+                    <p id="preview"
+                        dangerouslySetInnerHTML={ markedDownText}>
                     </p>
                 </div>
             </Collapse>
