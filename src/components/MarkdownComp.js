@@ -4,10 +4,11 @@ import Collapse from "react-bootstrap/Collapse";
 import TitleWithToggle from "./TitleWithToggle";
 
 
-function MarkdownComp() {
+function MarkdownComp({ markdownText }) {
 
     const [openPreview, setOpenPreview] = useState(true);
-    const htmlText = marked.parse('# Marked in Node.js\n\nRendered by **marked**.');
+    
+    const markedDownText = marked(markdownText, {sanitize: true});
 
     return (
         <>
@@ -21,7 +22,7 @@ function MarkdownComp() {
                 <div className="text text-start" id="editor-text">
                     <p>
                         <h2>The text below is marked down </h2><hr></hr>
-                        <div dangerouslySetInnerHTML={ {__html: htmlText}}></div>
+                        <div dangerouslySetInnerHTML={ {__html: markedDownText}}></div>
                     </p>
                 </div>
             </Collapse>

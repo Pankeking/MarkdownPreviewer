@@ -6,6 +6,7 @@ import { faUpRightAndDownLeftFromCenter, faDownLeftAndUpRightToCenter } from "@f
 function ToggleButtonComp({ open, onClick}) {
 
     return (
+        <div className="btn">
         <Button 
         onClick={onClick}
         aria-expanded={open}
@@ -13,6 +14,7 @@ function ToggleButtonComp({ open, onClick}) {
             {!open ? (<FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />)
             : (<FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} />)}
         </Button>
+        </div>
     )
 }
 export default ToggleButtonComp;

@@ -12,7 +12,7 @@ html {
 
 body {
   margin: 0;
-  background-color:lightgreen;
+  background-color:lightblue;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -23,4 +23,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#editor {
+  width: 101%;
+  height: 50vh;
+  margin-left: -1rem;
+  background-color: lightblue;
+  margin-right: 1rem;
+  padding: 1rem;
 }
