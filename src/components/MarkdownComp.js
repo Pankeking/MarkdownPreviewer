@@ -40,7 +40,7 @@ function MarkdownComp({ markdownText }) {
 
     return (
         <>
-        <div className="container w-75 shadow-lg border border-success mt-auto fs-1 text-center">
+        <div className="container w-75 shadow-lg border border-success mb-5 mt-auto fs-1 text-center">
            <TitleWithToggle
                 title={"Markdown Preview"}
                 open={openPreview}

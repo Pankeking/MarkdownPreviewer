@@ -43,9 +43,13 @@ function MainComp() {
     }
     return(
         <React.Fragment>
-            <div className="container mt-4">
+            <div className="container-fluid mt-4">
                 <EditorComp onChange={handleTextChange} InitText={InitText}/>
-                <div className="m-5"></div>
+                <div className="text-center">
+                    <div className="m-5"></div>
+                    <a id="credits" className="text-light fs-3 justify-center text fw-bold text-center" href="https://github.com/Pankeking/MarkdownPreviewer">by Pankeking</a>
+                    <div className="m-5"></div>
+                </div>
                 <MarkdownComp markdownText={markdownText} />
             </div>
         </React.Fragment>
