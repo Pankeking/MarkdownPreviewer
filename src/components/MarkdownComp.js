@@ -15,6 +15,27 @@ function MarkdownComp({ markdownText }) {
       breaks: true,
     });
 
+    // Override tables and images to proper bootstrap
+    renderer.table = (header, body) => {
+        return `
+          <table class="table-dark table-hover table">
+            <thead>${header}</thead>
+            <tbody>${body}</tbody>
+          </table>
+        `;
+      };
+      renderer.image = function (href, title, text) {
+        return (
+          '<img class="img-fluid" src="' +
+          href +
+          '" alt="' +
+          text +
+          '" title="' +
+          title +
+          '">'
+        );
+      };
+
     const markedDownText = {__html: marked(markdownText, {sanitize: true})};
 
     return (
@@ -26,7 +47,7 @@ function MarkdownComp({ markdownText }) {
                 onClick={() => setOpenPreview(!openPreview)}
            />
             <Collapse in={openPreview}>
-                <div className="text text-start" id="editor-text">
+                <div className="text text-start fs-4" id="editor-text">
                     <p id="preview"
                         dangerouslySetInnerHTML={ markedDownText}>
                     </p>

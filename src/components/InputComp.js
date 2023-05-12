@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
-import { marked } from "marked";
 
 function InputComp({ onChange, InitText }) {
 
@@ -14,7 +12,7 @@ function InputComp({ onChange, InitText }) {
     };
 
     return (
-        <div className="w-100 p-1 m-auto fs-6">
+        <div className="w-100 p-1 m-auto fs-5">
             <textarea
                 id="editor"
                 className="input"
